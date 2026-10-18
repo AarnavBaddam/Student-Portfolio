@@ -438,12 +438,13 @@
                 { color: '162, 89, 255', offset: 0.22 },
                 { color: '255, 106, 193', offset: 0.44 },
             ];
-            const STEPS = 700;
+            const small = innerWidth < 600; // phones: fewer points and a lower pixel ratio keep this at 60fps
+            const STEPS = small ? 360 : 700;
             let w, h, dpr, running = true;
             let mx = 0, my = 0, tx = 0, ty = 0;
 
             function resize() {
-                dpr = Math.min(devicePixelRatio || 1, 2);
+                dpr = Math.min(devicePixelRatio || 1, small ? 1.5 : 2);
                 w = canvas.clientWidth; h = canvas.clientHeight;
                 canvas.width = w * dpr; canvas.height = h * dpr;
                 ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -582,7 +583,7 @@
             let renderer;
             try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); }
             catch { return; }
-            renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+            renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.5 : 2));
 
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100);
@@ -600,8 +601,11 @@
             scene.add(engine);
             const radius = new THREE.Box3().setFromObject(engine).getBoundingSphere(new THREE.Sphere()).radius;
 
-            let dist = 1;
+            let dist = 1, lastP = -1, lastW = 0, lastH = 0;
             function size() {
+                // Mobile browsers fire resize when the URL bar slides; skip if the stage didn't actually change
+                if (stage.clientWidth === lastW && stage.clientHeight === lastH) return;
+                lastW = stage.clientWidth; lastH = stage.clientHeight; lastP = -1;
                 const aspect = stage.clientWidth / stage.clientHeight;
                 renderer.setSize(stage.clientWidth, stage.clientHeight, false);
                 camera.aspect = aspect;
@@ -613,6 +617,9 @@
 
             model = {
                 draw(p) {
+                    // Progress is pinned at 0 or 1 while the section is off-screen, so this skips those frames
+                    if (p === lastP) return;
+                    lastP = p;
                     // One full turn across the section, viewed from slightly above
                     engine.rotation.y = -0.6 + p * Math.PI * 2;
                     camera.position.set(0, dist * 0.34, dist * 0.94);
@@ -626,12 +633,18 @@
             onScroll();
         }
 
+        // Fetch three.js and the 5.6 MB model only when the visitor gets near the section
         if (!reduceMotion) {
-            loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
-                .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js'))
-                .then(() => new THREE.GLTFLoader().loadAsync('Models/engine.glb'))
-                .then(initModel)
-                .catch(() => {}); // offline or blocked CDN: the photo crossfade stays
+            const near = new IntersectionObserver(([entry]) => {
+                if (!entry.isIntersecting) return;
+                near.disconnect();
+                loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
+                    .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js'))
+                    .then(() => new THREE.GLTFLoader().loadAsync('Models/engine.glb'))
+                    .then(initModel)
+                    .catch(() => {}); // offline or blocked CDN: the photo crossfade stays
+            }, { rootMargin: '200% 0px' });
+            near.observe(explode);
         }
 
         let ticking = false;
@@ -669,7 +682,8 @@
         const segPill = document.getElementById('segPill');
         function movePill(btn) {
             segPill.style.width = btn.offsetWidth + 'px';
-            segPill.style.transform = `translateX(${btn.offsetLeft}px)`;
+            segPill.style.height = btn.offsetHeight + 'px';
+            segPill.style.transform = `translate(${btn.offsetLeft}px, ${btn.offsetTop}px)`;
         }
         segBtns.forEach(btn => btn.addEventListener('click', () => {
             segBtns.forEach(b => b.setAttribute('aria-selected', b === btn));
