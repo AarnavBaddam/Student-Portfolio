@@ -180,38 +180,6 @@
             </div>
         </section>
 
-        <!-- EXAMS -->
-        <section id="exams" class="section section--alt">
-            <div class="container">
-                <div class="section-head reveal">
-                    <p class="eyebrow">Exams &amp; Benchmarks</p>
-                    <h2 class="headline">The numbers.</h2>
-                    <p class="lede">December 2025 finals — and what each one taught me.</p>
-                </div>
-
-                <div class="stats">
-                    <div class="stat reveal">
-                        <div class="label">Honors Geometry Final</div>
-                        <div class="num" data-count="91">91</div>
-                        <div class="of">/100 · December, 2025</div>
-                        <p>Found gaps in proof writing and geometry concepts.</p>
-                    </div>
-                    <div class="stat reveal" style="--d:.1s">
-                        <div class="label">AP Human Geography Final</div>
-                        <div class="num" data-count="106">106</div>
-                        <div class="of">/100 (Curved Score) · December, 2025</div>
-                        <p>Applied my knowledge of geographic concepts and complex spatial analysis.</p>
-                    </div>
-                    <div class="stat reveal" style="--d:.2s">
-                        <div class="label">Honors Biology Final</div>
-                        <div class="num" data-count="97">97</div>
-                        <div class="of">/100 · December, 2025</div>
-                        <p>Noticed gaps in my understanding of biological processes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- LEADERSHIP -->
         <section id="leadership" class="section">
             <div class="container">
@@ -311,29 +279,33 @@
 
                 <div class="proj-grid">
                     <article class="proj proj--feature reveal">
-                        <p style="margin-bottom:10px">Algebra Textbook Solutions</p>
-                        <h3>Extreme Algebra Solutions</h3>
-                        <p>Contributed to comprehensive solution sets for an upcoming algebra educational resource.</p>
+                        <p style="margin-bottom:10px">Hackathon Winner · St. Louis City</p>
+                        <h3>City Hazard Detection</h3>
+                        <p>Won a St. Louis City hackathon and a launch award to publish our software for daily
+                            government use. It uses GIS imaging to detect and flag potholes across the city, along
+                            with crime, trash, graffiti and more, and can plug into the city's surveillance system.</p>
                         <div class="isbn">
-                            <div>ISBN<strong>9798287594442</strong></div>
-                            <div>Pub Date<strong>Summer 2026</strong></div>
+                            <div>Award<strong>Launch Award</strong></div>
+                            <div>Users<strong>St. Louis City</strong></div>
                         </div>
-                        <div class="foot"><span class="status status--pub">Pub Date: Summer 2026</span></div>
+                        <div class="foot"><span class="status status--done">Completed</span></div>
                     </article>
                     <article class="proj reveal">
-                        <h3>Portfolio Project</h3>
-                        <p>Helped students create their own portfolios and taught them the workflow of coding.</p>
+                        <h3>Missouri S&amp;T Satellite Team</h3>
+                        <p>Intern on an Air Force–funded build for the DEXTR competition. Helping code and design a
+                            satellite set to launch in 2029.</p>
                         <div class="foot"><span class="status">In Progress</span></div>
                     </article>
                     <article class="proj reveal" style="--d:.1s">
-                        <h3>Automotive Aerodynamics</h3>
-                        <p>Independent research into fluid dynamics and automotive efficiency.</p>
+                        <h3>Robotics Team</h3>
+                        <p>Mechanic on my school's robotics team, which competed at the World Championship last year.</p>
                         <div class="foot"><span class="status">In Progress</span></div>
                     </article>
-                    <article class="proj reveal">
-                        <h3>Kumon Article</h3>
-                        <p>Documenting observations on student learning patterns and effective teaching strategies.</p>
-                        <div class="foot"><span class="status">In Progress</span></div>
+                    <article class="proj reveal" style="--d:.2s">
+                        <h3>iMessage AI Assistant</h3>
+                        <p>Built a custom iMessage API to power a personal AI assistant that accesses my accounts and
+                            makes changes when I text it.</p>
+                        <div class="foot"><span class="status status--done">Completed</span></div>
                     </article>
                 </div>
                 <div class="more-row reveal">
@@ -352,18 +324,19 @@
                         <div style="margin-top:36px">
                             <div class="step" data-step="0">
                                 <h3>Assembled.</h3>
-                                <p>A complete assembly modeled in <strong>Autodesk Inventor</strong>.</p>
+                                <p>A complete car engine assembly modeled in <strong>Onshape</strong>.</p>
                             </div>
                             <div class="step dim" data-step="1">
-                                <h3>Exploded.</h3>
-                                <p>Every component separated along its axis to show how it all fits together.</p>
+                                <h3>Every side.</h3>
+                                <p>Keep scrolling to turn it all the way around and see how the parts fit together.</p>
                             </div>
                         </div>
                         <div class="progress-track"><div class="progress-fill" id="explodeFill"></div></div>
                     </div>
                     <div class="stage">
-                        <img src="Images/Assembled.jpeg" alt="Assembled CAD model" id="imgAssembled">
-                        <img src="Images/Exploded.jpeg" alt="Exploded CAD model" id="imgExploded" style="opacity:0">
+                        <img src="Images/Engine-front-iso.jpeg" alt="Car engine CAD model, front isometric view" id="imgAssembled">
+                        <img src="Images/Engine-back-iso.jpeg" alt="Car engine CAD model, back isometric view" id="imgExploded" style="opacity:0">
+                        <canvas id="explodeCanvas" role="img" aria-label="3D model of a car engine that turns as you scroll"></canvas>
                     </div>
                 </div>
             </div>
@@ -374,11 +347,16 @@
             <div class="container">
                 <div class="section-head reveal" style="margin-bottom:40px">
                     <h2 class="headline" style="font-size:clamp(2rem,4.5vw,3.25rem)">Every angle.</h2>
-                    <p class="lede">Designs created in Autodesk Inventor, featuring complex assemblies, exploded views,
-                        and isometric renders.</p>
+                    <p class="lede">Designs created in Autodesk Inventor and Onshape, featuring complex assemblies,
+                        exploded views, and isometric renders.</p>
                 </div>
 
                 <div class="gallery reveal" id="gallery">
+                    <figure class="shot"><button aria-label="Expand engine front isometric view"><img src="Images/Engine-front-iso.jpeg" alt="Car engine, front isometric view" loading="lazy"></button><figcaption>Engine <span>— front iso</span></figcaption></figure>
+                    <figure class="shot"><button aria-label="Expand engine back isometric view"><img src="Images/Engine-back-iso.jpeg" alt="Car engine, back isometric view" loading="lazy"></button><figcaption>Engine <span>— back iso</span></figcaption></figure>
+                    <figure class="shot"><button aria-label="Expand engine front view"><img src="Images/Engine-front.jpeg" alt="Car engine, front view showing pulleys" loading="lazy"></button><figcaption>Engine <span>— front</span></figcaption></figure>
+                    <figure class="shot"><button aria-label="Expand engine side view"><img src="Images/Engine-side.jpeg" alt="Car engine, side view showing exhaust headers" loading="lazy"></button><figcaption>Engine <span>— side</span></figcaption></figure>
+                    <figure class="shot"><button aria-label="Expand engine top view"><img src="Images/Engine-top.jpeg" alt="Car engine, top view" loading="lazy"></button><figcaption>Engine <span>— top</span></figcaption></figure>
                     <figure class="shot"><button aria-label="Expand Assembled view"><img src="Images/Assembled.jpeg" alt="Assembled" loading="lazy"></button><figcaption>Assembled <span>— full model</span></figcaption></figure>
                     <figure class="shot"><button aria-label="Expand Exploded view"><img src="Images/Exploded.jpeg" alt="Exploded" loading="lazy"></button><figcaption>Exploded <span>— component layout</span></figcaption></figure>
                     <figure class="shot"><button aria-label="Expand Back isometric view"><img src="Images/Backisoview.jpeg" alt="Back Iso" loading="lazy"></button><figcaption>Back Iso <span>— isometric render</span></figcaption></figure>
@@ -572,13 +550,88 @@
 
             const ep = sceneProgress(explode);
             const mix = clamp((ep - 0.3) / 0.35);
-            imgA.style.opacity = 1 - mix;
-            imgE.style.opacity = mix;
-            imgA.style.transform = `scale(${1 + mix * 0.06})`;
-            imgE.style.transform = `scale(${1.06 - mix * 0.06})`;
+            if (model) model.draw(clamp((ep - 0.1) / 0.75));
+            else {
+                imgA.style.opacity = 1 - mix;
+                imgE.style.opacity = mix;
+                imgA.style.transform = `scale(${1 + mix * 0.06})`;
+                imgE.style.transform = `scale(${1.06 - mix * 0.06})`;
+            }
             fill.style.transform = `scaleX(${ep})`;
             steps[0].classList.toggle('dim', mix > 0.5);
             steps[1].classList.toggle('dim', mix <= 0.5);
+        }
+
+        // --- 4b. CAD view: the car engine model turns as you scroll through the section ---
+        // Until three.js and the model load (or if WebGL is missing) the two photos crossfade instead.
+        let model = null;
+
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const s = document.createElement('script');
+                s.src = src;
+                s.onload = resolve;
+                s.onerror = reject;
+                document.head.append(s);
+            });
+        }
+
+        function initModel(gltf) {
+            const stage = explode.querySelector('.stage');
+            const canvas = document.getElementById('explodeCanvas');
+            let renderer;
+            try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); }
+            catch { return; }
+            renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100);
+            scene.add(new THREE.HemisphereLight(0xffffff, 0x5a6070, 0.55));
+            const key = new THREE.DirectionalLight(0xffffff, 0.7);
+            key.position.set(-3, 5, 4);
+            const rim = new THREE.DirectionalLight(0xffffff, 0.35);
+            rim.position.set(4, 2, -4);
+            scene.add(key, rim);
+
+            // The STL export carries no colors, so give the whole engine one machined-steel finish
+            const engine = gltf.scene;
+            const steel = new THREE.MeshPhongMaterial({ color: 0xa3a9b4, shininess: 70, specular: 0x555555 });
+            engine.traverse(o => { if (o.isMesh) o.material = steel; });
+            scene.add(engine);
+            const radius = new THREE.Box3().setFromObject(engine).getBoundingSphere(new THREE.Sphere()).radius;
+
+            let dist = 1;
+            function size() {
+                const aspect = stage.clientWidth / stage.clientHeight;
+                renderer.setSize(stage.clientWidth, stage.clientHeight, false);
+                camera.aspect = aspect;
+                camera.updateProjectionMatrix();
+                // Back off far enough that the model's bounding sphere fits the narrower field of view
+                const half = Math.atan(Math.tan(THREE.MathUtils.degToRad(15)) * Math.min(1, aspect));
+                dist = radius / Math.sin(half) * 0.92;
+            }
+
+            model = {
+                draw(p) {
+                    // One full turn across the section, viewed from slightly above
+                    engine.rotation.y = -0.6 + p * Math.PI * 2;
+                    camera.position.set(0, dist * 0.34, dist * 0.94);
+                    camera.lookAt(0, 0, 0);
+                    renderer.render(scene, camera);
+                }
+            };
+            stage.classList.add('is-3d');
+            addEventListener('resize', () => { size(); onScroll(); });
+            size();
+            onScroll();
+        }
+
+        if (!reduceMotion) {
+            loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
+                .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js'))
+                .then(() => new THREE.GLTFLoader().loadAsync('Models/engine.glb'))
+                .then(initModel)
+                .catch(() => {}); // offline or blocked CDN: the photo crossfade stays
         }
 
         let ticking = false;
@@ -590,23 +643,11 @@
         addEventListener('resize', onScroll);
         onScroll();
 
-        // --- 5. Reveal on scroll + count-up numbers ---
-        function countUp(el) {
-            const target = +el.dataset.count;
-            if (reduceMotion) return;
-            const start = performance.now(), dur = 1400;
-            (function step(now) {
-                const p = clamp((now - start) / dur);
-                el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
-                if (p < 1) requestAnimationFrame(step);
-            })(start);
-        }
-
+        // --- 5. Reveal on scroll ---
         const io = new IntersectionObserver(entries => {
             entries.forEach(e => {
                 if (!e.isIntersecting) return;
                 e.target.classList.add('in');
-                e.target.querySelectorAll('[data-count]').forEach(countUp);
                 io.unobserve(e.target);
             });
         }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });

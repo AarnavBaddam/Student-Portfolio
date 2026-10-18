@@ -458,34 +458,6 @@ a { color: inherit; }
 .chip[data-c="lang"] { --c-bg: #f5ecff; --c-fg: #7a3cc2; }
 .chip[data-c="soc"] { --c-bg: #ffecf3; --c-fg: #b8235a; }
 
-/* ---------- EXAMS ---------- */
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
-.stat {
-    background: #fff;
-    border-radius: var(--r);
-    padding: 36px 32px;
-}
-
-.stat .label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
-
-.stat .num {
-    font-size: clamp(4rem, 8vw, 6rem);
-    font-weight: 800;
-    letter-spacing: -0.05em;
-    line-height: 1;
-    margin: 18px 0 4px;
-    font-variant-numeric: tabular-nums;
-}
-
-.stat .of { color: var(--muted); font-weight: 600; }
-.stat p { color: var(--muted); margin: 18px 0 0; padding-top: 18px; border-top: 1px solid var(--line); }
-.stat:nth-child(1) .num { background: linear-gradient(135deg, #2997ff, #5e5ce6); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.stat:nth-child(2) .num { background: linear-gradient(135deg, #a259ff, #ff6ac1); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.stat:nth-child(3) .num { background: linear-gradient(135deg, #30d158, #00c7be); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-@media (max-width: 900px) { .stats { grid-template-columns: 1fr; } }
-
 /* ---------- LEADERSHIP ---------- */
 .cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
@@ -638,6 +610,10 @@ a { color: inherit; }
     object-fit: cover;
     will-change: opacity, transform;
 }
+
+.stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: none; }
+.stage.is-3d canvas { display: block; }
+.stage.is-3d img { display: none; }
 
 .progress-track { height: 3px; background: var(--line); border-radius: 3px; margin-top: 36px; overflow: hidden; max-width: 260px; }
 .progress-fill { height: 100%; width: 100%; background: var(--grad); transform-origin: left; transform: scaleX(0); }
