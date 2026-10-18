@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-18T02:34:45.397Z",
+        "reason": "assistant: user asked for Apple-inspired design; Apple product pages use gradient headline accents intentionally"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-18T02:35:28.974Z",
+        "reason": "assistant: lightbox <img> is hidden and gets its src from JS on open"
+      },
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-18T02:37:21.128Z",
+        "reason": "assistant: Exploded.jpeg starts at opacity 0 and crossfades in on scroll"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "styles.css"
+        ],
+        "createdAt": "2026-10-18T02:57:43.163Z",
+        "reason": "assistant: same intentional Apple-style gradient accents, CSS moved out of index.html"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "projects.html"
+        ],
+        "createdAt": "2026-10-18T02:57:49.175Z",
+        "reason": "assistant: same intentional Apple-style gradient accent as index.html"
+      }
+    ]
+  }
+}
